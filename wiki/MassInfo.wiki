@@ -1,0 +1,33 @@
+= 路遥知马力 =
+
+
+
+= emacs 使用 =
+== windows 下的配置文件 ==
+新建一个注册表文件 set_emacs.reg 如下：
+{{{
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\GNU\Emacs]
+"HOME"="d:\\Greensofts\\emacs-21.3"
+}}}
+
+然后，在该目录下运行
+{{{
+echo > .emacs
+}}}
+
+最后，编辑这个 .emacs 文件即可，所有的配置都在这儿实现。
+
+== 小特性 ==
+ * 语法高亮：在 options 菜单中，将语法高亮打开即可
+ * 下一行自动前置空格：？
+ * Tab键输入4个空格：？
+
+== 常用快捷键 ==
+
+ * 保存文件： C-x C-s
+ * 退出： C-x C-c
+ * 翻页：C-v 与 M-v
+ * 光标 到行末：C-e
+ * 删除区块：C-w

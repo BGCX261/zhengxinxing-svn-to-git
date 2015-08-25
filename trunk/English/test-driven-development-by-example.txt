@@ -1,0 +1,27 @@
+Clean code that works, in Ron Jeffries' pithy phrase, is the goal of Test-Driven Development.
+
+It is a predictable way to develop.
+
+If you only slap togather the first thing you think of, then you never have time to think of a second, better thing.
+
+But how do we get to clean code that works?
+
+Without taking too much counsel of our fears, here's what we do: ...
+
+These are two simple rules, but the generate complex individual and group behavior with technical implications such as the following.
+
+We must design organically, with running code providing feedback between decisions.
+
+Our designs must consist of many highly cohesive, loosely coupled components, just to make testing easy.
+
+Red/green/refactor--the TDD mantra.
+
+Assuming for the moment that such a programming style is possible, it further might be possible to dramatically reduce the defect density of code and make the subject of work crystal clear to all involved.
+
+I don't mean fear in a bad way but fear in the legitimate
+
+Fear makes you tentatives.
+
+You were aware of the gap between decision and feedback, and you controlled the gap deliberately.
+
+Test Infacted is the phrase Erich Gamma coined to describe this shift.

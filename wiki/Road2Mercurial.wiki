@@ -1,0 +1,28 @@
+== mercurial 的初次使用记录 ==
+
+服务器端：
+{{{
+mkdir /home/hg
+cd /home/hg
+hg init
+echo "hello, world" > hello.txt
+hg add
+hg commit -m "init the repository"
+hg serve -p 8001
+}}}
+
+客户端：
+
+用浏览器查看 http://192.168.0.200:8000 地址，可以看到各种版本相关信息
+{{{
+mkdir ~/projects
+cd ~projects
+hg clone http://192.168.0.200:8000/project1
+}}}
+现在在 ~/projects 目录下多出了一个 project1 目录，下面就有 hello.txt 文件。
+
+问题：
+
+ * 为什么在 URL 上一定要用 project1？为什么用任何的都可以？为什么不可以不用？
+
+

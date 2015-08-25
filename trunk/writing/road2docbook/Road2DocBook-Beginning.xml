@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<book>
+
+<title>Road to DocBook</title>
+<titleabbrev>Road2DocBook</titleabbrev>
+<info>
+  <author><personname>
+    <firstname>郑 </firstname> <surname>新星 </surname>
+  </personname></author>
+  <copyright><year>2008</year><holder>郑新星</holder></copyright>
+  <revhistory>
+     <revision>
+        <revnumber>0.1</revnumber>
+        <date>2008-12-06</date>
+        <revremark>still draft ...</revremark>
+     </revision>
+  </revhistory>
+</info>
+
+<dedication>
+<para>仅以此书献给所有热爱自由软件的人们！</para>
+<para>本文档最后更新于：$LastChangedDate$</para>
+</dedication>
+
+
+<preface><title>前言</title>
+<para>我有好多不满，关于中文的DocBook文档，最大的不满就是，实在是看不懂。因此经过痛苦的折磨后，终于决定挺身而出，振臂高呼，让和我一样困扰在DocBook概念中的人们知道一点点，关于这场世纪大骗局的真相。 </para>
+<para>在本文中，我将手把手教你编写你的第一个 DocBook 文档，并将它弄成一个工整的 html 输出来。 </para>
+<para>本文写于2008年5月</para>
+<mediaobject>
+  <imageobject>
+    <imagedata fileref="pictures/cygwin.png" format="PNG" align="center"/>
+  </imageobject>
+  <textobject>
+    <phrase>Cygwin Powered!</phrase>
+  </textobject>
+</mediaobject>
+
+  <itemizedlist><title>文档写作计划</title>
+    <listitem>将 Docbook 文档输出成为 pdf </listitem>
+    <listitem>将 Docbook 文档输出成为 word </listitem>
+    <listitem>将 word 文档转换成为 Docbook 文档 </listitem>
+    <listitem>自定义输出样式 </listitem>
+  </itemizedlist>
+</preface>
+
+
+<chapter><title> 初学DocBook </title>
+
+<sect1><title>环境准备 </title>
+
+  <para> 首先，本文所有内容，都在 Cygwin 环境下完成。因此请首先下载 Cygwin。然后在 安装 Cygwin 的时候，确保安装如下一些东西：</para>
+  <itemizedlist mark='bullet'>
+    <listitem>bash：这是一个 shell 环境，提供了很多便利的手段以完成日常工作</listitem>
+    <listitem>libxslt：这个软件包包含了 xsltpro 等一些XML文档转换工具 </listitem>
+    <listitem>make：它提供了自动化文档处理能力 </listitem>
+  </itemizedlist>
+  <para>其次，我们需要用到 DocBook 相关的 XSL 资源：</para>
+  <itemizedlist>
+    <listitem>DocBook DTD：用于检查你的 xml 文档语法是否符合规范     </listitem>
+    <listitem>DocBook XSL：用于描述输出的文档格式     </listitem>
+  </itemizedlist>
+  <para>现在开始装配 </para>
+  <orderedlist>
+    <listitem>   安装 Cygwin 及其必需工具、配置 Cygwin 使之支持中文（ 参看 http://julybox.com/?p=157 ）   
+    	<para>Cygwin仅安装最基本部分，加上必要的几个工具软件即可，大约需要下载50M左右的文件，安装后约占用200M空间。</para>
+    	<para>为了让Cygwin支持中文，需要做两个步骤。首先是打开 .bachrc，在文件末尾加入如下配置：
+    		<programlisting>
+# 中文支持——设置本地编码
+LC_CTYPE=zh_CN.gbk 
+CHARSET=GBK #(glib2需要使用找个环境变量确定文件名的编码) 
+export LC_CTYPE CHARSET
+alias ls='ls --show-control-chars -hF --color=tty'
+    		</programlisting>
+    		其次，打开 .inputrc 文件，在文件末尾添加如下语句：
+    		<programlisting>
+# 允许终端输入输出中文
+set convert-meta off 
+set input-meta on 
+set output-meta on    		
+    		</programlisting>
+    	</para>
+   	</listitem>
+    <listitem>   建立工作目录    
+        <para>到 http://www.oasis-open.org/docbook/xml ，选择一个版本将类似 docbook-5.0b5.tar.gz 这样的文件下载下来，解压。</para>
+        <para>在你硬盘某处，建立一个 src 目录，此目录将要放置与你的文章相关的所有文件 </para>
+        <para>然后在 src 目录下，建立 common 目录，将前述下载的 docbook 资源文件拷贝进去，目录结构大约如下：    		
+            <programlisting>
+            src
+            ├─我的作品1
+            │  └─pictures
+            ├─我的作品2
+            └─common
+                └─docbook
+                    ├─dtd
+                    │  └─ent
+                    └─xsl
+                        ├─common
+                        ├─html
+                        ├─htmlhelp
+                        │  └─doc
+                        ├─lib
+                        └─xhtml
+    		</programlisting></para>
+    </listitem>
+    <listitem>       </listitem>
+    <listitem>       </listitem>
+  </orderedlist>
+</sect1>
+
+
+<sect1><title>牛刀小试之“生成一个单独的html” </title>
+  <para> 首先，在src目录下，建立 simple 目录，该目录将用于本次的实验。 </para>
+  <para>接着，在 simple 目录下建立 simple.xml 文件，其内容大致如下：</para>
+  <programlisting>
+&lt;?xml version="1.0" encoding="utf-8"?>
+
+&lt;book xml:lang="zh-CN">
+  &lt;title>我的书名&lt;/title>
+
+  &lt;preface>&lt;title>序言&lt;/title>
+    &lt;para>
+      这是我的第一本书。
+    &lt;/para>
+  &lt;/preface>
+
+  &lt;chapter>&lt;title>DocBook安装&lt;/title>
+    &lt;para>
+      本章介绍DocBook的安装。
+    &lt;/para>
+  &lt;/chapter>
+
+  &lt;chapter>&lt;title>DocBook使用&lt;/title>
+    &lt;para>本章讲述 DocBook 的使用。&lt;/para>
+  &lt;/chapter>
+&lt;/book>
+  </programlisting>
+  <para>然后，建立 simple.xsl 文件，其内容如下：</para>
+  <programlisting>
+&lt;?xml version='1.0'?>
+&lt;xsl:stylesheet  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                 version="1.0">
+
+&lt;xsl:import href="../../docbook-xsl/html/docbook.xsl"/>
+&lt;xsl:output method="html"
+            encoding="UTF-8"
+            indent="no"/>
+
+&lt;/xsl:stylesheet>
+  </programlisting>
+  <para>现在，我们在 Cygwin 中运行如下命令：</para>
+  <programlisting>
+    xsltproc --nonet -o simple.html simple.xsl simple.xml
+  </programlisting>
+  <para>噢......世界一片安静，真好！用浏览器打开 simple.html 文件，欣赏一下自己的作品吧。</para>
+</sect1>
+
+
+<sect1><title>牛刀小试之“生成 html help 文件（*.chm）”</title>
+  <para>现在，我们来制作一个独立的 chm 文件，它的正式名称叫做“html help”文件。</para>
+  <para>首先，我们需要安装HtmlHelpWorkshop，并将 hhc.exe 拷贝到 windows 目录下</para>
+  <para>其次，由于 Microsoft 提供的 html workshop 不支持 UTF-8 编码，因此我们需要将 xml 文件转换成本地编码 GB18030：</para>
+  <programlisting>
+    xmllint --format --encode "GB18030" --output simple-gb.xml simple.xml
+  </programlisting>
+  <para>然后新建一个名为 chm.xsl 的 XSL 文件，其内容如下：</para>
+  <programlisting>
+&lt;?xml version="1.0"?>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'>
+
+  &lt;xsl:import href="../../docbook-xsl/htmlhelp/htmlhelp.xsl"/>
+
+  &lt;xsl:param name="l10n.gentext.language" select="'zh_cn'"/>
+  &lt;xsl:param name="htmlhelp.encoding" select="'GB18030'"/>
+  &lt;xsl:param name="chunker.output.encoding" select="'GB18030'"/>
+
+  &lt;xsl:param name="htmlhelp.title">
+    &lt;xsl:text>我的第一本书&lt;/xsl:text>
+  &lt;/xsl:param>
+
+&lt;/xsl:stylesheet>
+  </programlisting>
+  <para>接着，执行转换，命令如下：</para>
+  <programlisting>
+    xsltproc --nonet chm.xsl simple-gb.xml
+  </programlisting>
+  <para>我们可以看到，这次转换出来的 html 文件有好几个。用浏览器查看其中的 index.html ，你会看到一个目录。现在我们就做好了 html help 文件的准备工作了，接下来就是激动人心的最后一步：生成真正的 chm 文件：</para>
+  <programlisting>
+    hhc htmlhelp.hhp
+  </programlisting>
+  <para>我们看到，htmlhelp.chm 出现了！打开看看，果然，一切正常。</para>
+  <para>? 我做了个实验，好像直接用 simple.xml 也可以正常。那么 xmllint 这步是否可以省略？</para>
+
+</sect1>
+
+
+<sect1><title>自动化的享受</title>
+  <para>
+    我从来都是个不怎么聪明的人，一向记不住太多的命令，也不愿意每次都输入一长串的字符。因此我们现在来将转换的工作自动化一下。在使用 Docbook 时候，自动化工具一般有 make、Ant 等。make 是一个比较古老的工具，可以帮助用户实现一系列文件操作，而 Ant 则是 Java 用户的首选。鉴于简洁性考虑，这里我选用了 make 工具。
+  </para>
+  <para>make 工具默认的脚本文件名叫 Makefile，因此我们在 simple 目录下建立名为 Makefile 的文本文件，内容大致如下</para>
+  <programlisting>
+    ## 定义一个变量，用于指定 stylesheet 文件所在
+    XSL-HTML-SINGLEFILE = ./style-single-file.xsl
+
+    ## 设定一个目标操作，该操作调用 xsltproc 进行处理
+    ## 请注意，前置空白对齐采用制表符（Tab键），而不是空格
+    html:
+    	xsltproc \
+    		--nonet \
+    		--output $@ \
+    		$(XSL-HTML-SINGLEFILE) \
+    		simple.xml
+  </programlisting>
+  <para>现在我们只要在 Cygwin 中，直接键入“make”回车，就可以免去那一长串命令的输入了。</para>
+</sect1>
+
+<sect1><title>分离源文件</title>
+    <para>现在假设要写一本《维修手册》，内容可能比较多，按设备型号有20种，每种分别由一个人专门负责。显然，此事如果可以让每个人独立编辑一个自己的文件，那么《维修手册》的编写将会变得方便许多。</para>
+    <para>我们可以这么做。首先，在 src 目录下建立 common 目录，将 docbook 相关的资源放进来。主要是 docbook.dtd 及其相关文件。恩，这个步骤其实你在前面已经完成了。 </para>
+    <para>其次，在 src 下新建 maintain-manual 目录，分别建立如下文件：</para>
+    <programlisting>
+maintain-manual.xml  ———— 主文件，一般很少编辑
+bookinfo.xml ———————— 维修手册相关信息
+device1.xml  ———————— 第 1 种型号的维修手册
+device2.xml  ———————— 第 2 种型号的维修手册
+...
+device20.xml ———————— 第 20 种型号的维修手册
+    </programlisting>
+    <para>其中， maintain-manual.xml 文件犹如目录一般，编辑好后一般就不用动了，除非添加新的型号。此文件内容大约如下：
+        <programlisting>
+&lt;?xml version="1.0" encoding="utf-8"?>
+
+&lt;!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+"../common/docbook/dtd/docbook.dtd"
+[
+&lt;!ENTITY title "产品维修手册">
+&lt;!ENTITY bookinfo SYSTEM "bookinfo.xml">
+&lt;!ENTITY chapter.device1 SYSTEM "device1.xml">
+&lt;!ENTITY chapter.device2 SYSTEM "device2.xml">
+&lt;!ENTITY chapter.device2 SYSTEM "device20.xml">
+]>
+
+&lt;book>
+&lt;title>&title;&lt;/title>
+&bookinfo;
+&chapter.device1;
+&chapter.device2;
+&chapter.device20;
+&lt;/book>
+        </programlisting></para>
+    <para>现在，张三只要专心维护 device1.xml 这一个文件就可以了，他根本不必担心自己不小心会改动了别人写的部分内容。</para>
+    
+</sect1>
+
+<sect1><title>我的问题</title>
+
+  <itemizedlist>
+    <listitem>catalog究竟是什么？
+      <para>我参考 limodou 写的东西(http://www.woodpecker.org.cn:9081/doc/XML/docbook_step_1.6.6/src/html/translate_html.html#sect.3.1)，可是就是无法输出 html 文件，后来发现首先我需要将build.bat 置于src目录，其次要在src目录下建立一个名为 CATALOG 的文件，内容就是几行东西，就可以了。</para></listitem>
+    <listitem>我参考saxon的文档，里面说只要运行。。。</listitem>
+    <listitem>用hhc生成文件时，为何 bibliography 章节无法体现在左侧目录中？</listitem>
+    <listitem>用hhc生成文件时，如何让首页显示“前言”而不是“第一章”？
+      <para>这是因为所写的xml文件不符合DocBook语法规范。preface元素只能用于book或part里面，不能用于 article 里。在 article 里用了 preface，生成单一 html 文件的时候没太大问题，而生成 chm 文件的时候就出问题了。</para>
+    </listitem>
+
+  </itemizedlist>
+</sect1>
+
+</chapter>
+
+<appendix><title>常见元素</title>
+<para>Appendixes are optional.
+</para>
+</appendix>
+
+
+<bibliography>
+  <title>参考文档</title>
+
+  <biblioentry>
+      <biblioset relation='article'>
+        <title>DocBook XSL: The Complete Guide</title>
+        <edition>Fourth Edition</edition>
+        <author><personname>
+          <surname>Stayton</surname><firstname>Bob</firstname>
+        </personname></author>
+        <copyright><year>2002-2007</year><holder>Sagehill Enterprises</holder></copyright>
+        <publisher><ulink url="http://www.sagehill.net/docbookxsl"> www.sagehill.net</ulink></publisher>
+      </biblioset>
+      </biblioentry>
+  <biblioentry>
+      <bibliosource><ulink url="http://www.blogjava.net/wiflish/archive/2006/08/22/65120.html">网络上某文章</ulink><bibliosource>
+  </biblioentry>
+
+</bibliography>
+
+
+
+</book>

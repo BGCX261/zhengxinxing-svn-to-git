@@ -1,0 +1,19 @@
+
+
+kill -s 9 <PID> 强行终止某个进程
+
+查看某目录下最大的一个文件
+ls -lS|head -2
+
+列出当前目录下的所有子目录
+ls -d */
+echo */
+
+mount D:/projects /projects/  在Cygwin下将某个windows的目录加载上来
+
+ps 查看进程
+
+pwd 查看当前目录
+
+top 查看资源占用情况
+

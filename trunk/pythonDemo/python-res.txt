@@ -1,0 +1,6 @@
+一款处理xml的高效工具：
+    http://effbot.org/zone/element-index.htm
+
+google Calendar 的python API：
+    http://code.google.com/apis/calendar/developers_guide_python.html
+    http://code.google.com/p/gdata-python-client/

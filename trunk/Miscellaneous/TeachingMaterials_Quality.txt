@@ -1,0 +1,279 @@
+============
+质量常识培训
+============
+.. section-numbering::
+.. $Id: TeachingMaterials_Quality.txt 48 2008-01-17 06:33:20Z zhengxinxing $
+
+
+- 讲师：郑新星
+- 文档日期：2007.06.16
+
+
+议程
+============
+
+本次培训的内容与时间安排大致如下：
+
+#. 培训目的
+#. 质量的基本概念
+#. 质量的衡量方式
+#. 质量理念的变迁 1H
+#. ISO 9000 质量管理体系 2H
+#. 质量与标准化 0.5H
+#. 各行业相关质量知识
+#. 质量领域名人的介绍 0.5H
+
+
+培训目的
+========
+#. 了解质量相关的一些常识
+#. 树立质量意识，理解公司各岗位工作在质量方面的作用与意义
+#. 了解 ISO9001 质量管理体系在公司各岗位的应用情况
+#. 了解各岗位与质量相关的部分知识与技能
+
+
+质量是什么
+==========
+质量的概念
+
+- 符合性质量
+- 适用性质量
+- 广义质量
+
+怎么衡量质量
+============
+- 对于公司 —— 质量成本、客户满意度
+- 对于生产 —— 过程能力指数 Cv、流通合格率 RTY
+- 对于硬件产品 —— 可靠性、可维修性
+- 软件产品 —— 易用性、可移植性、可扩展性
+
+
+质量成本
+========
+- PAF模式：预防成本、鉴定成本、故障成本
+- 劣质成本：冰山一角
+
+
+顾客满意
+========
+- Kano 模型：魅力质量、一元质量、理所当然质量
+
+
+质量管理理念的发展
+==================
+
+- 质量检验：上个世纪初，美国，泰罗，科学管理运动
+- 统计质量控制：1931，Shewhart，控制图；抽样规则
+- 全面质量管理：1961，Feigenbaum；
+
+  - ISO 9001-2000
+  - 6σ
+  - 卓越绩效模式
+
+
+质量框图
+========
+- 体现组织各部门与顾客的关系
+
+
+世界各国质量发展情况
+====================
+
+
+常见的管理体系
+==============
+- ISO 9000 系列 —— 质量管理体系
+- ISO 14000 系列 —— 环境管理体系
+- ISO/TS 16949 系列 —— 汽车工业产品质量管理体系
+- OHSAS 18000 系列 —— 职业健康安全管理体系
+- ISO 22000 —— 食品安全管理体系
+
+
+ISO9000 质量管理八大原则
+==========================
+
+1. Customer focus（以顾客为关注焦点）
+2. Leadership（领导作用）
+3. Involvement of people（全员参与）
+4. Process approach（过程方法）
+5. System approach to management（管理的系统方法）
+6. Continual improvement（持续改进）
+7. Factual approach to decision-making（基于事实的决策）
+8. Mutually beneficial supplier relationships（与供方互利的关系）
+
+
+ISO9001专题1：总要求与文件要求
+==============================
+（参见ISO9001原文文档）
+4.1 General requirements （总要求）
+4.2 Documentation requirements （文件要求）
+4.2.1 General （总则）
+4.2.2 Quality manual （质量手册）
+4.2.3 Control of documents （文件控制）
+4.2.4 Control of records （记录控制）
+
+
+ISO9001专题2：管理职责
+======================
+5.1 Management commitment （管理承诺）
+5.2 Customer focus （以顾客为关注焦点，见7.2.1和8.2.1）
+5.3 Quality policy （质量方针）
+5.4 Planning （策划）
+5.4.1 Quality objectives （质量目标）
+5.4.2 Quality management system planning （质量管理体系策划）	
+5.5 Responsibility, authority and communication （职责、权限和沟通）
+5.5.1 Responsibility and authority （职责与权限）
+5.5.2 Management representative （管理者代表）
+5.5.3 Internal communication （内部沟通）
+5.6 Management review （管理评审）
+5.6.1 General （总则）
+5.6.2 Review input （评审输入）
+5.6.3 Review output （评审输出）
+
+
+ISO9001专题3：资源管理
+======================
+6.1 Provision of resources （资源的提供）
+6.2 Human resources （人力资源）
+6.2.1 General （总则）
+6.2.2 Competence, awareness and training （能力、意识与培训）
+6.3 Infrastruction （基础设施）
+6.4 Work environment （工作环境）
+
+
+ISO9001专题4：产品实现
+======================
+7.1 Planning of product realization （产品实现的策划）
+7.2 Customer-related processes （与顾客有关的过程）
+7.2.1 Determination of requirements related to the product （与产品有关要求的确定）
+7.2.2 Review of requirements related to the product （与产品有关要求的评审）
+7.2.3 Customer communication （顾客沟通）
+7.3 Design and development （设计和开发）
+7.3.1 Design and development planning （设计和开发策划）
+7.3.2 Design and development inputs （设计和开发输入）
+7.3.3 Design and development outputs （设计和开发输出）
+7.3.4 Design and development review （设计和开发评审）
+7.3.5 Design and development verification （设计和开发验证）
+7.3.6 Design and development validation （设计和开发确认）
+7.3.7 Control of design and development changes （设计和开发更改的控制）
+7.4 Purchasing （采购）
+7.4.1 Purchasing process （采购过程）
+7.4.2 Purchasing information （采购信息）
+7.4.3 Verification of purchased product （采购产品的验证）
+7.5 Production and service provision （生产和服务提供）
+7.5.1 Control of production and service provision （生产和服务提供的控制）
+7.5.2 Validation of processes for production and service provision （生产和服务提供过程的确认）
+7.5.3 Identification and traceability （标识和可追溯性）
+7.5.4 Customer property （顾客财产）
+7.5.5 Preservation of product （产品防护）
+7.6 Control of monitoring and measuring devices （监视和测量装置的控制）
+
+
+ISO9001专题5：测量、分析、改进
+==============================
+8.1 General （总则）
+8.2 Monitoring and measurement （监视和测量）
+8.2.1 Customer satisfaction （顾客满意）
+8.2.2 Internal audit （内部审核）
+8.2.3 Monitoring and measurement of processes （过程的监视和测量）
+8.2.4 Monitoring and measurement of product （产品的监视和测量）
+8.3 Control of nonconforming product （不合格品的控制）
+8.4 Analysis of data （数据分析）
+8.5 Improvement （改进）
+8.5.1 Continual improvemnet （持续改进）
+8.5.2 Corrective action （纠正措施）
+8.5.3 Preventive action （预防措施）
+
+
+ISO9001案例介绍
+===============
+
+
+标准与标准化
+============
+
+- 我国标准四级别：国标、行标、地方标准、企标
+- 三大国际标准组织：
+
+  - ISO 国际标准化组织
+  - ITU 国际电信联盟
+  - IEC 国际电工委员会
+
+
+各行业质量相关知识——电子产品
+==============================
+- 可靠性、可维修性
+- EMC
+- ESD 防护
+- 电子产品的特点：必须用电、考虑绝缘、核心电路、基础元器件、环境条件
+- 技术特性：电压、电流、功率、频率、温升、EMC、环境条件
+- 检验方法：型式试验、例行试验、抽样试验、研究性试验
+- 检验内容：
+
+  - 结构要求：外观、绝缘性、耐压、防水
+  - 性能要求：工作限值、温升试验、绝缘性能试验、工作性能试验、EMC试验、环境试验
+
+- 环境试验：高低温、温度冲击、湿热、防腐、霉菌、密封、振动、老化、运输包装
+- EMC：静电抗扰性、浪涌、电源波动与瞬间跌落、射频电磁场辐射
+
+
+各行业质量相关知识——软件产品
+==============================
+- 版本控制、每日构建
+- 代码审阅
+- XP：成对编程、
+- 功能性：适合、准确、互操作、依从、安全
+- 可靠性：成熟、容错、易恢复
+- 易用性：易理解、易学、易操作
+- 效率：时间特性、资源特性
+- 可维护性：易分析、易维护、稳定、易测试
+- 可移植性：适应性、易安装性、遵循性、易替换性
+
+
+各行业质量相关知识——服务业
+============================
+- 可靠
+- 响应快
+- 保证
+- 设身处地
+- 有形
+
+
+聆听大师的声音 —— 休哈特：SPC
+===============================
+Walter A. Shewhart
+
+
+聆听大师的声音 —— 戴明：PDCA
+==============================
+William Edwards Deming，1900年出生，美国人
+
+- 统计学大师
+- 日本质量之父：丰田公司总部三张大照片 —— 丰田公司创始人、现任丰田公司总裁，和戴明
+- 戴明奖 —— 日本最高级的质量奖
+- 领导法则14条 —— TQM的体现
+- PDCA循环 —— Plan、Do、Check、Action
+
+
+聆听大师的声音 —— 菲根堡姆
+======================================
+Feigenbaum 于上个世纪50年代，提出质量成本的概念
+1961，全面质量管理
+
+
+聆听大师的声音 —— 朱兰
+==========================
+J.M.Juran
+《朱兰质量手册》
+朱兰三步曲
+
+
+
+聆听大师的声音 —— 克劳士比
+============================
+
+
+结束
+====
+谢谢
+
